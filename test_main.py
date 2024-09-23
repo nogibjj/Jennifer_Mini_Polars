@@ -1,41 +1,58 @@
-"""
-Test goes here
-
-"""
-
-from main import total_applicants, total_female_applicant, total_male_applicant
-
-import pandas as pd
-import matplotlib.pyplot as plt
+from main import stats_overview, total_and_eth_value
+import polars as pl
+import polars.testing as plt
 
 # Create a sample DataFrame
 Data = {
-    "Apps Received": [100, 200, 150],
-    "Female": [40, 80, 70],
-    "Male": [60, 110, 80],
+    "Apps Received": [10, 20, 30, 40, 50],
+    "Black": [1, 2, 3, 4, 5],
+    "Hispanic": [2, 4, 6, 8, 10],
+    "Asian": [3, 6, 9, 12, 15],
+    "Caucasian": [4, 8, 12, 16, 20],
+    "American Indian/ Alaskan Native": [5, 10, 15, 20, 25],
+    "Filipino": [6, 12, 18, 24, 30],
+    "Unknown_Ethnicity": [7, 14, 21, 28, 35],
 }
 
-sample_df = pd.DataFrame(Data)
+sample_df = pl.DataFrame(Data)
 
 
 # Function tests
-def test_total_applicants():
-    assert total_applicants(sample_df) == 450
-    print("total_applicants test passed!")
+def test_stats_overview():
+    print("The expected statistic summary for sample data is: ")
+    expected_output = sample_df.describe()
+    print(expected_output)
+
+    print("The actual statistic summary for sample data is: ")
+    actual_output = stats_overview(sample_df)
+    print(actual_output)
+
+    # how to compare expected output and actual output automatically???
 
 
-def test_female_applicants():
-    assert total_female_applicant(sample_df) == 190
-    print("total_female_applicants test passed!")
+def test_total_and_eth_value():
+    print("The expected total applicants by gender for sample data is: ")
+    expected_output = pl.DataFrame(
+        {
+            "statistic": ["total"],
+            "Apps Received": [150],
+            "Black": [15],
+            "Hispanic": [30],
+            "Asian": [45],
+            "Caucasian": [60],
+            "American Indian/ Alaskan Native": [75],
+            "Filipino": [90],
+            "Unknown_Ethnicity": [105],
+        }
+    )
+    print(expected_output)
+    print("The actual total applicants by gender for sample data is: ")
+    actual_output = total_and_eth_value(sample_df)
 
-
-def test_male_applicants():
-    assert total_male_applicant(sample_df) == 250
-    print("total_male_applicants test passed!")
+    # how to compare expected output and actual output automatically???
 
 
 if __name__ == "__main__":
-    test_total_applicants()
-    test_female_applicants()
-    test_male_applicants()
+    test_stats_overview()
+    test_total_and_eth_value()
     print("All tests passed!")
