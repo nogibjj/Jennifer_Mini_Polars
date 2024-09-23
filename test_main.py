@@ -27,8 +27,6 @@ def test_stats_overview():
     actual_output = stats_overview(sample_df)
     print(actual_output)
 
-    # how to compare expected output and actual output automatically???
-
 
 def test_total_and_eth_value():
     print("The expected total applicants by gender for sample data is: ")
@@ -48,8 +46,6 @@ def test_total_and_eth_value():
     print(expected_output)
     print("The actual total applicants by gender for sample data is: ")
     actual_output = total_and_eth_value(sample_df)
-
-    # how to compare expected output and actual output automatically???
 
 
 if __name__ == "__main__":
