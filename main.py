@@ -52,7 +52,7 @@ def total_and_eth_value(df):
 
 # calculate total number of applicants by ethinicity, for plotting
 def ethnicity_total(df):
-    ethnicity_total = df[
+    eth_total = df[
         [
             "Black",
             "Hispanic",
@@ -63,7 +63,7 @@ def ethnicity_total(df):
             "Unknown_Ethnicity",
         ]
     ].sum()
-    return ethnicity_total
+    return eth_total
 
 
 # visualize the total number of applicants by ethnicity
