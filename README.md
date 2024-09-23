@@ -1,4 +1,4 @@
-
+[![CI](https://github.com/nogibjj/Jennifer_Mini_Polars/actions/workflows/cicd.yml/badge.svg)](https://github.com/nogibjj/Jennifer_Mini_Polars/actions/workflows/cicd.yml)
 
 # Mini Project 3: Polars Script
 

@@ -7514,7 +7514,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [35]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [48]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">polars</span> <span class="k">as</span> <span class="nn">pl</span>
@@ -7650,7 +7650,7 @@ a.anchor-link {
 </div>
 </div>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[35]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[48]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
 <pre>polars.config.Config</pre>
 </div>
@@ -7662,12 +7662,12 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [36]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [49]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Generate a summary of statistics</span>
-<span class="k">def</span> <span class="nf">stats_overview</span><span class="p">(</span><span class="n">job_applicants_df</span><span class="p">):</span>
-    <span class="n">summary_stats</span> <span class="o">=</span> <span class="n">job_applicants_df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span>
+<span class="k">def</span> <span class="nf">stats_overview</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="n">summary_stats</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span>
         <span class="p">[</span>
             <span class="s2">"Apps Received"</span><span class="p">,</span>
             <span class="s2">"Black"</span><span class="p">,</span>
@@ -7679,8 +7679,7 @@ a.anchor-link {
             <span class="s2">"Unknown_Ethnicity"</span><span class="p">,</span>
         <span class="p">]</span>
     <span class="p">)</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">summary_stats</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">stats_overview</span>
+    <span class="k">return</span> <span class="n">summary_stats</span>
 
 
 <span class="n">stats_overview</span><span class="p">(</span><span class="n">job_applicants_df</span><span class="p">)</span>
@@ -7693,38 +7692,17 @@ a.anchor-link {
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>shape: (9, 9)
-┌──────────┬──────────┬──────────┬──────────┬──────────┬──────────┬──────────┬──────────┬──────────┐
-│ statisti ┆ Apps     ┆ Black    ┆ Hispanic ┆ Asian    ┆ Caucasia ┆ American ┆ Filipino ┆ Unknown_ │
-│ c        ┆ Received ┆ ---      ┆ ---      ┆ ---      ┆ n        ┆ Indian/  ┆ ---      ┆ Ethnicit │
-│ ---      ┆ ---      ┆ f64      ┆ f64      ┆ f64      ┆ ---      ┆ Alaskan  ┆ f64      ┆ y        │
-│ str      ┆ f64      ┆          ┆          ┆          ┆ f64      ┆ Nativ…   ┆          ┆ ---      │
-│          ┆          ┆          ┆          ┆          ┆          ┆ ---      ┆          ┆ f64      │
-│          ┆          ┆          ┆          ┆          ┆          ┆ f64      ┆          ┆          │
-╞══════════╪══════════╪══════════╪══════════╪══════════╪══════════╪══════════╪══════════╪══════════╡
-│ count    ┆ 187.0    ┆ 187.0    ┆ 187.0    ┆ 187.0    ┆ 187.0    ┆ 187.0    ┆ 187.0    ┆ 187.0    │
-│ null_cou ┆ 0.0      ┆ 0.0      ┆ 0.0      ┆ 0.0      ┆ 0.0      ┆ 0.0      ┆ 0.0      ┆ 0.0      │
-│ nt       ┆          ┆          ┆          ┆          ┆          ┆          ┆          ┆          │
-│ mean     ┆ 499.7219 ┆ 144.5294 ┆ 182.1657 ┆ 37.60427 ┆ 84.47058 ┆ 3.374332 ┆ 19.63101 ┆ 27.94652 │
-│          ┆ 25       ┆ 12       ┆ 75       ┆ 8        ┆ 8        ┆          ┆ 6        ┆ 4        │
-│ std      ┆ 2252.044 ┆ 948.2905 ┆ 824.1933 ┆ 98.94178 ┆ 320.9112 ┆ 14.93818 ┆ 61.75382 ┆ 123.8977 │
-│          ┆ 225      ┆ 8        ┆ 75       ┆ 6        ┆ 91       ┆ 7        ┆ 7        ┆ 52       │
-│ min      ┆ 5.0      ┆ 0.0      ┆ 0.0      ┆ 0.0      ┆ 0.0      ┆ 0.0      ┆ 0.0      ┆ 0.0      │
-│ 25%      ┆ 38.0     ┆ 5.0      ┆ 10.0     ┆ 3.0      ┆ 9.0      ┆ 0.0      ┆ 1.0      ┆ 2.0      │
-│ 50%      ┆ 100.0    ┆ 14.0     ┆ 24.0     ┆ 9.0      ┆ 26.0     ┆ 1.0      ┆ 5.0      ┆ 6.0      │
-│ 75%      ┆ 263.0    ┆ 42.0     ┆ 97.0     ┆ 29.0     ┆ 64.0     ┆ 2.0      ┆ 13.0     ┆ 20.0     │
-│ max      ┆ 28230.0  ┆ 12618.0  ┆ 10214.0  ┆ 1094.0   ┆ 3843.0   ┆ 153.0    ┆ 740.0    ┆ 1475.0   │
-└──────────┴──────────┴──────────┴──────────┴──────────┴──────────┴──────────┴──────────┴──────────┘
-</pre>
-</div>
-</div>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[36]:</div>
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>&lt;function __main__.stats_overview(job_applicants_df)&gt;</pre>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[49]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (9, 9)</small><table border="1" class="dataframe"><thead><tr><th>statistic</th><th>Apps Received</th><th>Black</th><th>Hispanic</th><th>Asian</th><th>Caucasian</th><th>American Indian/ Alaskan Native</th><th>Filipino</th><th>Unknown_Ethnicity</th></tr><tr><td>str</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td><td>f64</td></tr></thead><tbody><tr><td>"count"</td><td>187.0</td><td>187.0</td><td>187.0</td><td>187.0</td><td>187.0</td><td>187.0</td><td>187.0</td><td>187.0</td></tr><tr><td>"null_count"</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td></tr><tr><td>"mean"</td><td>499.721925</td><td>144.529412</td><td>182.165775</td><td>37.604278</td><td>84.470588</td><td>3.374332</td><td>19.631016</td><td>27.946524</td></tr><tr><td>"std"</td><td>2252.044225</td><td>948.29058</td><td>824.193375</td><td>98.941786</td><td>320.911291</td><td>14.938187</td><td>61.753827</td><td>123.897752</td></tr><tr><td>"min"</td><td>5.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td></tr><tr><td>"25%"</td><td>38.0</td><td>5.0</td><td>10.0</td><td>3.0</td><td>9.0</td><td>0.0</td><td>1.0</td><td>2.0</td></tr><tr><td>"50%"</td><td>100.0</td><td>14.0</td><td>24.0</td><td>9.0</td><td>26.0</td><td>1.0</td><td>5.0</td><td>6.0</td></tr><tr><td>"75%"</td><td>263.0</td><td>42.0</td><td>97.0</td><td>29.0</td><td>64.0</td><td>2.0</td><td>13.0</td><td>20.0</td></tr><tr><td>"max"</td><td>28230.0</td><td>12618.0</td><td>10214.0</td><td>1094.0</td><td>3843.0</td><td>153.0</td><td>740.0</td><td>1475.0</td></tr></tbody></table></div>
 </div>
 </div>
 </div>
@@ -7734,12 +7712,12 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [37]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [50]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Generate a table showing the total number of applicants by ethnicity</span>
-<span class="k">def</span> <span class="nf">total_and_eth_value</span><span class="p">(</span><span class="n">job_applicants_df</span><span class="p">):</span>
-    <span class="n">total_and_eth</span> <span class="o">=</span> <span class="n">job_applicants_df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span>
+<span class="k">def</span> <span class="nf">total_and_eth_value</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="n">total_and_eth</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span>
         <span class="p">[</span>
             <span class="n">pl</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s2">"Apps Received"</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">"Apps Received"</span><span class="p">),</span>
             <span class="n">pl</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s2">"Black"</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">"Black"</span><span class="p">),</span>
@@ -7773,7 +7751,7 @@ a.anchor-link {
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[37]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[50]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div><style>
 .dataframe > thead > tr,
@@ -7792,12 +7770,12 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [38]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [51]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># calculate total number of applicants by ethinicity, for plotting</span>
-<span class="k">def</span> <span class="nf">ethnicity_total</span><span class="p">():</span>
-    <span class="n">ethnicity_total</span> <span class="o">=</span> <span class="n">job_applicants_df</span><span class="p">[</span>
+<span class="k">def</span> <span class="nf">ethnicity_total</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="n">eth_total</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span>
         <span class="p">[</span>
             <span class="s2">"Black"</span><span class="p">,</span>
             <span class="s2">"Hispanic"</span><span class="p">,</span>
@@ -7808,12 +7786,12 @@ a.anchor-link {
             <span class="s2">"Unknown_Ethnicity"</span><span class="p">,</span>
         <span class="p">]</span>
     <span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">ethnicity_total</span>
+    <span class="k">return</span> <span class="n">eth_total</span>
 
 
 <span class="c1"># visualize the total number of applicants by ethnicity</span>
-<span class="k">def</span> <span class="nf">eth_chart</span><span class="p">():</span>
-    <span class="n">eth_and_total</span> <span class="o">=</span> <span class="n">ethnicity_total</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">eth_chart</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="n">eth_and_total</span> <span class="o">=</span> <span class="n">ethnicity_total</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
     <span class="n">eth_and_total</span> <span class="o">=</span> <span class="n">eth_and_total</span><span class="o">.</span><span class="n">to_pandas</span><span class="p">()</span>
     <span class="n">eth_and_total</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">"bar"</span><span class="p">,</span> <span class="n">stacked</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"Number of Applicants"</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Ethnicity"</span><span class="p">)</span>
@@ -7822,8 +7800,8 @@ a.anchor-link {
     <span class="k">return</span> <span class="n">eth_chart</span>
 
 
-<span class="n">ethnicity_total</span><span class="p">()</span>
-<span class="n">eth_chart</span><span class="p">()</span>
+<span class="n">ethnicity_total</span><span class="p">(</span><span class="n">job_applicants_df</span><span class="p">)</span>
+<span class="n">eth_chart</span><span class="p">(</span><span class="n">job_applicants_df</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -7840,9 +7818,9 @@ a.anchor-link {
 </div>
 </div>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[38]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[51]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>&lt;function __main__.eth_chart()&gt;</pre>
+<pre>&lt;function __main__.eth_chart(df)&gt;</pre>
 </div>
 </div>
 </div>
