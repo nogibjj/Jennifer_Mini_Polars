@@ -3,11 +3,12 @@ import matplotlib.pyplot as plt
 
 # Load job applicant csv file into dataframe
 job_applicants_df = pl.read_csv("Job_Applicants_by_Gender_and_Ethnicity.csv")
+pl.Config.set_tbl_cols(100)
 
 
 # Generate a summary of statistics
-def stats_overview(job_applicants_df):
-    summary_stats = job_applicants_df.select(
+def stats_overview(df):
+    summary_stats = df.select(
         [
             "Apps Received",
             "Black",
@@ -20,12 +21,12 @@ def stats_overview(job_applicants_df):
         ]
     ).describe()
     print(summary_stats)
-    return stats_overview
+    return summary_stats
 
 
 # Generate a table showing the total number of applicants by ethnicity
-def total_and_eth_value(job_applicants_df):
-    total_and_eth = job_applicants_df.select(
+def total_and_eth_value(df):
+    total_and_eth = df.select(
         [
             pl.sum("Apps Received").alias("Apps Received"),
             pl.sum("Black").alias("Black"),
@@ -70,7 +71,6 @@ def eth_chart():
     eth_and_total = ethnicity_total()
     eth_and_total = eth_and_total.to_pandas()
     eth_and_total.plot(kind="bar", stacked=False, title="Number of Applicants")
-    plt.figure(figsize=(16, 6))
     plt.xlabel("Ethnicity")
     plt.ylabel("Number of Applicants")
     plt.show()

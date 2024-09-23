@@ -12,6 +12,6 @@ fastapi==0.85.0
 uvicorn==0.18.3
 #analysis
 pandas==2.2.2
+polars==1.7.1
 matplotlib==3.9.2
-numpy
 

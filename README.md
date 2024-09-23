@@ -16,9 +16,9 @@ The data used in this analysis comes from a dataset published by data.lacity.org
 
 
 ## Statistic Summary 
-![alt text](image-5.png)
+![alt text](image-6.png)
 
-![alt text](image-4.png)
+![alt text](image-7.png)
 
 ## Data Visualizations
 ![alt text](image-2.png)
