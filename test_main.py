@@ -25,7 +25,8 @@ def test_stats_overview():
 
     print("The actual statistic summary for sample data is: ")
     actual_output = stats_overview(sample_df)
-    print(actual_output)
+    print(expected_output["Asian"][2])
+    assert int(expected_output["Asian"][2]) == int(actual_output["Asian"][2])
 
 
 def test_total_and_eth_value():
@@ -46,6 +47,8 @@ def test_total_and_eth_value():
     print(expected_output)
     print("The actual total applicants by gender for sample data is: ")
     actual_output = total_and_eth_value(sample_df)
+    print(expected_output["Asian"][0])
+    assert int(expected_output["Asian"][0]) == int(actual_output["Asian"][0])
 
 
 if __name__ == "__main__":
