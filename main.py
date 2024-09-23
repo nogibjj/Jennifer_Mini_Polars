@@ -51,8 +51,8 @@ def total_and_eth_value(df):
 
 
 # calculate total number of applicants by ethinicity, for plotting
-def ethnicity_total():
-    ethnicity_total = job_applicants_df[
+def ethnicity_total(df):
+    ethnicity_total = df[
         [
             "Black",
             "Hispanic",
@@ -67,8 +67,8 @@ def ethnicity_total():
 
 
 # visualize the total number of applicants by ethnicity
-def eth_chart():
-    eth_and_total = ethnicity_total()
+def eth_chart(df):
+    eth_and_total = ethnicity_total(df)
     eth_and_total = eth_and_total.to_pandas()
     eth_and_total.plot(kind="bar", stacked=False, title="Number of Applicants")
     plt.xlabel("Ethnicity")
@@ -80,5 +80,5 @@ def eth_chart():
 if __name__ == "__main__":
     stats_overview(job_applicants_df)
     total_and_eth_value(job_applicants_df)
-    ethnicity_total()
-    eth_chart()
+    ethnicity_total(job_applicants_df)
+    eth_chart(job_applicants_df)
